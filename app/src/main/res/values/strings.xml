@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Crud App</string>
+
+    // UserFragment
+    <string name="user_name_hint">User\'s name</string>
+    <string name="user_email_hint">User\'s email</string>
+    <string name="user_add_button_text">Add</string>
+    <string name="user_title">User</string>
+</resources>
