@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.example.crudapp.R
 import com.example.crudapp.data.db.AppDatabase
 import com.example.crudapp.data.db.dao.UserDAO
@@ -30,7 +31,12 @@ class UserListFragment : Fragment(R.layout.user_list_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Adapter of User's List
         observeViewModelEvents()
+
+        // Action of Floating Button
+        configureViewListeners()
     }
 
     private fun observeViewModelEvents() {
@@ -43,6 +49,12 @@ class UserListFragment : Fragment(R.layout.user_list_fragment) {
             }
         }
 
+    }
+
+    private fun configureViewListeners() {
+        fabAddUser.setOnClickListener {
+            findNavController().navigate(R.id.userFragment)
+        }
     }
 
 }
