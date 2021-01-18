@@ -5,5 +5,11 @@
     <string name="user_name_hint">User\'s name</string>
     <string name="user_email_hint">User\'s email</string>
     <string name="user_add_button_text">Add</string>
-    <string name="user_title">User</string>
+
+    <string name="user_added_success">User added!</string>
+    <string name="user_added_error">Error to add User!</string>
+
+    <string name="user_add_title">Users</string>
+    <string name="user_list_title">Users</string>
+
 </resources>

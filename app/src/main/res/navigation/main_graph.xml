@@ -3,12 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/userFragment">
+    app:startDestination="@id/userListFragment">
 
-    // User Fragment
+    // List User Fragment
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.crudapp.ui.userlist.UserListFragment"
+        android:label="@string/user_list_title"
+        tools:layout="@layout/user_list_fragment" />
+
+    // Add User Fragment
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.crudapp.ui.user.UserFragment"
-        android:label="@string/user_title"
+        android:label="@string/user_add_title"
         tools:layout="@layout/user_fragment" />
+
 </navigation>
