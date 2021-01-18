@@ -13,6 +13,6 @@ interface UserRepository {
 
     suspend fun deleteAllUsers()
 
-    suspend fun getAllUsers(): LiveData<List<UserEntity>>
+    fun getAllUsers(): LiveData<List<UserEntity>>
 
 }
