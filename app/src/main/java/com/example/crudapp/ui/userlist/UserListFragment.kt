@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.crudapp.R
 import com.example.crudapp.data.db.AppDatabase
 import com.example.crudapp.data.db.dao.UserDAO
+import com.example.crudapp.extension.navigateWithAnimations
 import com.example.crudapp.repository.DatabaseDataSource
 import com.example.crudapp.repository.UserRepository
 import kotlinx.android.synthetic.main.user_list_fragment.*
@@ -53,7 +54,7 @@ class UserListFragment : Fragment(R.layout.user_list_fragment) {
 
     private fun configureViewListeners() {
         fabAddUser.setOnClickListener {
-            findNavController().navigate(R.id.userFragment)
+            findNavController().navigateWithAnimations(R.id.userFragment)
         }
     }
 
