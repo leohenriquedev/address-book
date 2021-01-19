@@ -52,6 +52,11 @@ class UserListFragment : Fragment(R.layout.user_list_fragment) {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUsers()
+    }
+
     private fun configureViewListeners() {
         fabAddUser.setOnClickListener {
             findNavController().navigateWithAnimations(R.id.userFragment)

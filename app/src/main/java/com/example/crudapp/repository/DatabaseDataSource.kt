@@ -34,7 +34,7 @@ class DatabaseDataSource(
         userDAO.deleteAll()
     }
 
-    override fun getAllUsers(): LiveData<List<UserEntity>> {
+    override suspend fun getAllUsers(): List<UserEntity> {
         return userDAO.getAll()
     }
 

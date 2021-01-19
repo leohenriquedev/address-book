@@ -22,5 +22,5 @@ interface UserDAO {
     suspend fun deleteAll()
 
     @Query(value = "SELECT * FROM users")
-    fun getAll(): LiveData<List<UserEntity>>
+    suspend fun getAll(): List<UserEntity>
 }

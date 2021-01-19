@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.example.crudapp.R
 import com.example.crudapp.data.db.AppDatabase
 import com.example.crudapp.data.db.dao.UserDAO
@@ -45,6 +46,9 @@ class UserFragment : Fragment(R.layout.user_fragment) {
                 is UserViewModel.UserState.Inserted -> {
                     clearFields()
                     hideKeyboard()
+                    requireView().requestFocus()
+
+                    findNavController().popBackStack()
                 }
             }
         }
