@@ -10,13 +10,23 @@
         android:id="@+id/userListFragment"
         android:name="com.example.crudapp.ui.userlist.UserListFragment"
         android:label="@string/user_list_title"
-        tools:layout="@layout/user_list_fragment" />
+        tools:layout="@layout/user_list_fragment" >
+        <action
+            android:id="@+id/action_userListFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
 
     // Add User Fragment
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.crudapp.ui.user.UserFragment"
-        android:label="@string/user_add_title"
-        tools:layout="@layout/user_fragment" />
+        android:label="@string/user_title"
+        tools:layout="@layout/user_fragment" >
+        <argument
+            android:name="user"
+            app:argType="com.example.crudapp.data.db.entity.UserEntity"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

@@ -48,7 +48,7 @@
 
     // Add Button
     <Button
-        android:id="@+id/button_add_user"
+        android:id="@+id/btn_user"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -56,6 +56,19 @@
         app:layout_constraintEnd_toEndOf="@id/input_layout_email"
         app:layout_constraintStart_toStartOf="@id/input_layout_email"
         app:layout_constraintTop_toTopOf="@id/input_layout_email" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
+        android:text="@string/user_delete_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

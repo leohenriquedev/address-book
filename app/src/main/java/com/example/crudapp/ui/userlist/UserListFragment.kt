@@ -42,7 +42,13 @@ class UserListFragment : Fragment(R.layout.user_list_fragment) {
 
     private fun observeViewModelEvents() {
         viewModel.allUsersEvent.observe(viewLifecycleOwner) { allUsers ->
-            val userListAdapter = UserListAdapter(allUsers)
+            val userListAdapter = UserListAdapter(allUsers).apply {
+                onItemClick = { user ->
+                    val directions = UserListFragmentDirections
+                        .actionUserListFragmentToUserFragment(user)
+                    findNavController().navigateWithAnimations(directions)
+                }
+            }
 
             with(recycler_users) {
                 setHasFixedSize(true)
@@ -59,7 +65,9 @@ class UserListFragment : Fragment(R.layout.user_list_fragment) {
 
     private fun configureViewListeners() {
         fabAddUser.setOnClickListener {
-            findNavController().navigateWithAnimations(R.id.userFragment)
+            findNavController().navigateWithAnimations(
+                R.id.action_userListFragment_to_userFragment
+            )
         }
     }
 

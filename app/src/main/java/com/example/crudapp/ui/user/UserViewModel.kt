@@ -21,11 +21,19 @@ class UserViewModel(
     val messageEventData: LiveData<Int>
         get() = _messageEventData
 
-    fun addUser(name: String, email: String) = viewModelScope.launch {
+    fun addOrUpdateUser(name: String, email: String, id: Long = 0) {
+        if (id > 0) {
+            updateUser(id, name, email)
+        } else {
+            insertUser(name, email)
+        }
+    }
+
+    private fun insertUser(name: String, email: String) = viewModelScope.launch {
         try {
             val id = repository.insertUser(name, email)
             if(id > 0) {
-                _userStateEventData.value = UserState.Inserted
+                _userStateEventData.value = UserState.Updated
                 _messageEventData.value = R.string.user_added_success
             }
         } catch (ex: Exception) {
@@ -34,8 +42,36 @@ class UserViewModel(
         }
     }
 
+    private fun updateUser(id: Long, name: String, email: String) = viewModelScope.launch {
+        try {
+            repository.updateUser(id, name, email)
+            _userStateEventData.value = UserState.Inserted
+            _messageEventData.value = R.string.user_updated_success
+
+        } catch (ex: Exception) {
+            _messageEventData.value = R.string.user_updated_error
+            Log.e(TAG, ex.toString())
+        }
+    }
+
+
+    fun removeUser(id: Long) = viewModelScope.launch {
+        try {
+            if(id > 0) {
+                repository.deleteUser(id)
+                _userStateEventData.value = UserState.Deleted
+                _messageEventData.value = R.string.user_deleted_success
+            }
+        } catch (ex: Exception) {
+            _messageEventData.value = R.string.user_deleted_error
+            Log.e(TAG, ex.toString())
+        }
+    }
+
     sealed class UserState {
         object Inserted : UserState()
+        object Updated: UserState()
+        object Deleted: UserState()
     }
 
     companion object {

@@ -13,6 +13,8 @@ class UserListAdapter(
     private val users : List<UserEntity>
 ) : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>() {
 
+    var onItemClick: ((entity: UserEntity) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.user_item, parent, false)
@@ -26,7 +28,7 @@ class UserListAdapter(
 
     override fun getItemCount() = users.size
 
-    class UserListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class UserListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val textViewUserName: TextView = itemView.text_user_name
         private val textViewUserEmail: TextView = itemView.text_user_email
@@ -34,6 +36,11 @@ class UserListAdapter(
         fun bindView(user: UserEntity) {
             textViewUserName.text = user.name
             textViewUserEmail.text = user.email
+
+            itemView.setOnClickListener {
+                onItemClick?.invoke(user)
+            }
+
         }
 
     }

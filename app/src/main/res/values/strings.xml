@@ -2,14 +2,25 @@
     <string name="app_name">Crud App</string>
 
     // User Fragment
-    <string name="user_add_title">New User</string>
-    <string name="user_added_success">User added!</string>
-    <string name="user_added_error">Error to add User!</string>
+    <string name="user_title">User</string>
+
     <string name="user_name_hint">User\'s name</string>
     <string name="user_email_hint">User\'s email</string>
+
     <string name="user_add_button_text">Add</string>
+    <string name="user_added_success">User added!</string>
+    <string name="user_added_error">Error to add User!</string>
+
+    <string name="user_update_button_text">Update</string>
+    <string name="user_updated_success">User updated!</string>
+    <string name="user_updated_error">Error to update User!</string>
+
+    <string name="user_delete_button_text">Delete</string>
+    <string name="user_deleted_success">User deleted!</string>
+    <string name="user_deleted_error">Error to delete User!</string>
 
     //UserList Fragment
     <string name="user_list_title">Users</string>
+
 
 </resources>
